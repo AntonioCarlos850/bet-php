@@ -22,6 +22,11 @@ class Soccer implements Game
         return $this->result;
     }
 
+    public function getName()
+    {
+        return $this->name;
+    }
+
     public function getId(): int
     {
         return $this->id;
