@@ -1,6 +1,6 @@
 # bet-php
 
-This is a simple repository to enhance my test skills
+This is a simple repository to improve my test skills
 
 ## How config
 
