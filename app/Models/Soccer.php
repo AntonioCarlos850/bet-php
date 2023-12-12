@@ -1,8 +1,8 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
-use Interfaces\Game;
+use App\Interfaces\Game;
 
 class Soccer implements Game
 {

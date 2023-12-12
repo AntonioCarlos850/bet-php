@@ -1,17 +1,19 @@
 <?php
 
-namespace Models;
+namespace App\Models;
 
-use Interfaces\Game;
+use App\Interfaces\Game;
 
 class Bet
-{ 
+{
     protected array $games = [];
+    protected int $value;
     protected bool $winner = false;
     public function __construct(
-        protected float $value, 
+        float $value,
         protected float $multiplier
     ) {
+        $this->value = intval(floor($value * 100));
     }
 
     public function addGame(Game $game)
@@ -36,7 +38,7 @@ class Bet
 
     public function getValue(): float
     {
-        return $this->value;
+        return $this->value / 100;
     }
 
     public function getMultiplier(): float
