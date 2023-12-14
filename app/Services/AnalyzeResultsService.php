@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Exception;
 use App\Models\Bet;
+use BadMethodCallException;
 
 class AnalyzeResultsService
 {
@@ -14,7 +15,7 @@ class AnalyzeResultsService
     private function validateInput(): void
     {
         if (count($this->bet->getGames()) !== count($this->games)) {
-            throw new Exception('Number of games passed and bet games is different');
+            throw new \BadMethodCallException('Number of games passed and bet games is different');
         }
     }
 

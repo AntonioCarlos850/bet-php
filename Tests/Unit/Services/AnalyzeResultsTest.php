@@ -76,6 +76,7 @@ final class AnalyzeResultsTest extends TestCase
     #[DataProvider('provideInvalidInput')]
     public function testInvalidInput(Bet $bet, array $games): void
     {
+        $this->expectException(\BadMethodCallException::class);
         $this->expectExceptionMessage('Number of games passed and bet games is different');
         new AnalyzeResultsService($bet, $games);
     }
