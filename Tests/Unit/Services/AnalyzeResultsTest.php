@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Unit\Services;
+namespace Tests\Unit\Services;
 
 use App\Models\Bet;
 use App\Models\Soccer;
