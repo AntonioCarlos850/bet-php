@@ -6,10 +6,11 @@ use App\Interfaces\Game;
 
 class Soccer implements Game
 {
-    protected string $result = '0-0';
-
-    public function __construct(public string $name, private int $id)
-    {
+    public function __construct(
+        public string $name,
+        private int $id,
+        protected string $result = '0-0'
+    ) {
     }
 
     public function setResult($result)
