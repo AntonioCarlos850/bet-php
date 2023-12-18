@@ -3,10 +3,10 @@
 namespace App\DAOs;
 
 use App\Interfaces\Database;
-use App\Models\Soccer;
+use App\Models\Soccer as ModelsSoccer;
 use PDO;
 
-class SoccerDAO
+class Soccer
 {
     // TODO: Implements a Query Builder
     private PDO $con;
@@ -14,7 +14,7 @@ class SoccerDAO
         $this->con = $db->getConnection();
     }
 
-    public function insert(Soccer $game): void
+    public function insert(ModelsSoccer $game): void
     {
         $sql = 'INSERT INTO soccer ("name", "result") VALUES (?, ?)';
         $stmt = $this->con->prepare($sql);
@@ -23,7 +23,7 @@ class SoccerDAO
         $stmt->execute();
     }
 
-    public function update(Soccer $game): bool
+    public function update(ModelsSoccer $game): bool
     {
         $sql = 'UPDATE soccer SET name = :name, result = :result WHERE id = :id';
         $stmt = $this->con->prepare($sql);
@@ -33,7 +33,7 @@ class SoccerDAO
         return $stmt->execute();
     }
 
-    public function find(int $id): Soccer
+    public function find(int $id): ModelsSoccer
     {
         $sql = 'SELECT * from soccer WHERE id = :id';
         $stmt = $this->con->prepare($sql);
@@ -41,7 +41,7 @@ class SoccerDAO
         $stmt->execute();
         $result = $stmt->fetch();
 
-        return new Soccer($result['name'], $result['id'], $result['result']);
+        return new ModelsSoccer($result['name'], $result['id'], $result['result']);
     }
 
     public function getAll(): array
@@ -52,7 +52,7 @@ class SoccerDAO
 
         $games = [];
         foreach ($results as $game) {
-            $games[] = new Soccer($game['name'], $game['id'], $game['result']);
+            $games[] = new ModelsSoccer($game['name'], $game['id'], $game['result']);
         }
 
         return $games;
