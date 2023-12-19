@@ -8,7 +8,7 @@ class Soccer implements Game
 {
     public function __construct(
         public string $name,
-        private int $id,
+        private ?int $id = null,
         protected string $result = '0-0'
     ) {
     }
