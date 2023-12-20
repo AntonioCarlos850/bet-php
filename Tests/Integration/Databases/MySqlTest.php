@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Databases;
+namespace Tests\Integration\Databases;
 
 use App\Databases\MySql;
 use PDO;
