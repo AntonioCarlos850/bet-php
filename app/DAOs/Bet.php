@@ -62,4 +62,10 @@ class Bet
 
         return $bets;
     }
+
+    public function deleteAll(): void
+    {
+        $sql = 'DELETE FROM bets WHERE true';
+        $this->con->exec($sql);
+    }
 }
