@@ -7,7 +7,7 @@ use PDO;
 
 class SQLite implements Database
 {
-    public static $con;
+    protected static $con;
 
     public static function getConnection(): PDO
     {

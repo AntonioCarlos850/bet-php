@@ -7,7 +7,7 @@ use PDO;
 
 class SQLiteMemory implements Database
 {
-    public static \PDO $con;
+    protected static \PDO $con;
 
     public static function getConnection(): PDO
     {

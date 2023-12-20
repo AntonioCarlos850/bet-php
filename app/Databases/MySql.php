@@ -12,7 +12,7 @@ class MySql implements Database
     const MYSQL_USER = 'root';
     const MYSQL_PASSWORD = 'root';
     const MYSQL_DATABASE = 'test';
-    public static $con;
+    protected static $con;
 
     public static function getConnection(): PDO
     {
