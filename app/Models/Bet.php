@@ -8,12 +8,13 @@ class Bet
 {
     protected array $games = [];
     protected int $value;
-    protected bool $winner = false;
     public function __construct(
         float $value,
-        protected float $multiplier
+        protected float $multiplier,
+        private ?int $id = null,
+        protected bool $winner = false
     ) {
-        $this->value = intval(floor($value * 100));
+        $this->value = intval(round($value * 100));
     }
 
     public function addGame(Game $game)
@@ -39,6 +40,11 @@ class Bet
     public function getValue(): float
     {
         return $this->value / 100;
+    }
+
+    public function getId(): float
+    {
+        return $this->id;
     }
 
     public function getMultiplier(): float
