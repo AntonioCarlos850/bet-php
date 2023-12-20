@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Services;
 
+use App\DAOs\Bet as DAOsBet;
 use App\Models\Bet;
 use App\Models\Soccer;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -10,6 +11,13 @@ use App\Services\AnalyzeResultsService;
 
 final class AnalyzeResultsTest extends TestCase
 {
+    private DAOsBet $dao;
+
+    protected function setUp(): void
+    {
+        $this->dao = $this->createMock(DAOsBet::class);
+    }
+
     public static function provideWinnerBetAndGames(): array
     {
         $games = [];
@@ -68,7 +76,7 @@ final class AnalyzeResultsTest extends TestCase
     #[DataProvider('provideNotWinnerBetAndGames')]
     public function testValidInput(Bet $bet, array $games): void
     {
-        $service = new AnalyzeResultsService($bet, $games);
+        $service = new AnalyzeResultsService($bet, $games, $this->dao);
 
         $this->assertIsObject($service);
     }
@@ -78,13 +86,13 @@ final class AnalyzeResultsTest extends TestCase
     {
         $this->expectException(\BadMethodCallException::class);
         $this->expectExceptionMessage('Number of games passed and bet games is different');
-        new AnalyzeResultsService($bet, $games);
+        new AnalyzeResultsService($bet, $games, $this->dao);
     }
 
     #[DataProvider('provideWinnerBetAndGames')]
     public function testWinnerBet(Bet $bet, array $games): void
     {
-        $service = new AnalyzeResultsService($bet, $games);
+        $service = new AnalyzeResultsService($bet, $games, $this->dao);
 
         $this->assertTrue($service->verifyBet()->getResult());
     }
@@ -92,7 +100,7 @@ final class AnalyzeResultsTest extends TestCase
     #[DataProvider('provideNotWinnerBetAndGames')]
     public function testNotWinnerBet(Bet $bet, array $games): void
     {
-        $service = new AnalyzeResultsService($bet, $games);
+        $service = new AnalyzeResultsService($bet, $games, $this->dao);
 
         $this->assertFalse($service->verifyBet()->getResult());
     }
