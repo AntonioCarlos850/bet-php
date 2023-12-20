@@ -9,8 +9,8 @@
         <testsuite name="unit">
             <directory>Tests/Unit</directory>
         </testsuite>
-        <testsuite name="feature">
-            <directory>Tests/Feature</directory>
+        <testsuite name="integration">
+            <directory>Tests/Integration</directory>
         </testsuite>
     </testsuites>
     <logging>
