@@ -7,6 +7,7 @@ use PDO;
 
 class MySql implements Database
 {
+    // This isn't a good practice, use environment variables
     const MYSQL_HOST = 'mysql';
     const MYSQL_PORT = 3306;
     const MYSQL_USER = 'root';
