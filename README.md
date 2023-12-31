@@ -7,6 +7,7 @@ This is a simple repository to improve my test skills
 ### Requisites
 - You will need composer
 - PHP >= 8.1
+- Xdebug
 
 ### Running
 - At your CLI in folder, just run vendor/bin/phpunit Tests/
