@@ -8,6 +8,7 @@ use App\Models\Soccer;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use App\Services\AnalyzeResultsService;
+use PHPUnit\Framework\MockObject\MockObject;
 
 final class AnalyzeResultsTest extends TestCase
 {
@@ -94,6 +95,7 @@ final class AnalyzeResultsTest extends TestCase
     {
         $service = new AnalyzeResultsService($bet, $games, $this->dao);
 
+        $this->dao->expects($this->once())->method('update');
         $this->assertTrue($service->verifyBet()->getResult());
     }
 
