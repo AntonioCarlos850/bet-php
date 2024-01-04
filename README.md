@@ -11,3 +11,6 @@ This is a simple repository to improve my test skills
 
 ### Running
 - At your CLI in folder, just run vendor/bin/phpunit Tests/
+
+#### TODO:
+- Kill all escaped mutants of tests
